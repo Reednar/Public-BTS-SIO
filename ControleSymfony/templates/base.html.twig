@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Symfony{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+           <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Symfony</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{path('home')}}">Accueil
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('contact_list')}}">Afficher les contacts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('contact_new')}}">Ajouter un contact</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+        {% for label, messages in app.flashes %}
+
+            <div class="container">
+                <div class="alert alert-{{ label }}">
+                    {% for message in messages %}
+                        <p>{{ message | raw }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+        {% endfor %}
+
+        {% block body %}{% endblock %}
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+                $('a[data-suppression]').click(function () {
+            var lien = $(this).attr("data-suppression"); // recupère le lien du boutton "poubelle"
+            console.log(lien);
+            var message = $(this).attr("data-message"); // recupère le lien du boutton "poubelle"
+            $("#btnSuppr").attr("href", lien); // on écrit ce lien sur le bouton "supprimer"
+            $(".modal-body").text(message);
+            });
+            </script>
+</html>

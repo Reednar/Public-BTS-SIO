@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition d'un contact{% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+        <h1>Modifier le contact : {{ contact.nom }} {{ contact.prenom }}</h1>
+
+            {{ form_start(form) }}
+
+            {{ form_widget(form) }}
+        
+
+        <button type="submit" class="btn btn-primary  mt-5">Enregistrez les modifications</button>
+		<a href="{{path('contact_list', {'id': contact.id})}}" type="button" class="btn btn-secondary  mt-5">Annuler</a>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+{% endblock %}

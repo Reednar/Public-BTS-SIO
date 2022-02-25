@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    {{contact.nom}} {{contact.prenom}}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <img src="{{ contact.avatar }}" alt="Avatar de jojo" style="height: auto; width: 100%; display: block; border: 3px solid;">
+            </div>
+            <div class="col-6 pt-5">
+                <h1>{{contact.nom}}
+                    {{contact.prenom}}</h1>
+                <p>Téléphone :
+                    {{contact.telephone}}</p>
+                <p>Adresse mail :
+                    {{contact.mail}}</p>
+                <p class="h2">
+                    <strong>Adresse :
+                        {{contact.adresse}}</strong><br>
+                    <strong>Code postal :
+                        {{contact.codepostal}}</strong><br>
+                    <strong>Ville :
+                        {{contact.ville}}</strong><br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
